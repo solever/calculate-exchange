@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -11,7 +11,12 @@ export class AppController {
   }
 
   @Get('exchange')
-  get_exchange(): Promise<string> {
-    return this.appService.get_exchange();
+  get_exchange1(): Promise<string> {
+    return this.appService.get_exchange1();
+  }
+
+  @Post('exchange')
+  get_exchange2(@Body('date') date: string): Promise<string> {
+    return this.appService.get_exchange2(date);
   }
 }

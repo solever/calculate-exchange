@@ -15,13 +15,25 @@ const axios_1 = require("@nestjs/axios");
 let AppService = class AppService {
     constructor(httpService) {
         this.httpService = httpService;
+        this.API_KEY = '3PzoEuYikzij4V5wygxBN1kt7b8mKfKe';
+        this.API_DATA = 'AP01';
+        this.API_URL = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?';
         this.DATA_URL = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=3PzoEuYikzij4V5wygxBN1kt7b8mKfKe&searchdate=20230420&data=AP01';
     }
     getHello() {
         return 'Hello World!!!!!!!!!!!';
     }
-    async get_exchange() {
+    async get_exchange1() {
         const products = await this.httpService.get(this.DATA_URL).toPromise();
+        console.log(products.data);
+        return products.data;
+    }
+    async get_exchange2(date) {
+        const url = this.API_URL
+            + 'authkey=' + this.API_KEY
+            + '&searchdate=' + date
+            + '&data=' + this.API_DATA;
+        const products = await this.httpService.get(url).toPromise();
         console.log(products.data);
         return products.data;
     }

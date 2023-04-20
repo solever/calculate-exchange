@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
@@ -19,8 +22,11 @@ let AppController = class AppController {
     getHello() {
         return this.appService.getHello();
     }
-    get_exchange() {
-        return this.appService.get_exchange();
+    get_exchange1() {
+        return this.appService.get_exchange1();
+    }
+    get_exchange2(date) {
+        return this.appService.get_exchange2(date);
     }
 };
 __decorate([
@@ -34,7 +40,14 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], AppController.prototype, "get_exchange", null);
+], AppController.prototype, "get_exchange1", null);
+__decorate([
+    (0, common_1.Post)('exchange'),
+    __param(0, (0, common_1.Body)('date')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "get_exchange2", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
