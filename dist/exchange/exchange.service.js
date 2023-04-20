@@ -9,26 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppService = void 0;
+exports.ExchangeService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("@nestjs/axios");
-let AppService = class AppService {
+let ExchangeService = class ExchangeService {
     constructor(httpService) {
         this.httpService = httpService;
-        this.DATA_URL = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=3PzoEuYikzij4V5wygxBN1kt7b8mKfKe&searchdate=20230420&data=AP01';
+        this.DATA_URL = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=3PzoEuYikzij4V5wygxBN1kt7b8mKfKe&searchdate=20230418&data=AP01';
     }
-    getHello() {
-        return 'Hello World!!!!!!!!!!!';
-    }
-    async get_exchange() {
-        const products = await this.httpService.get(this.DATA_URL).toPromise();
-        console.log(products.data);
-        return products.data;
+    get_exchange() {
+        return "hello";
     }
 };
-AppService = __decorate([
+ExchangeService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [axios_1.HttpService])
-], AppService);
-exports.AppService = AppService;
-//# sourceMappingURL=app.service.js.map
+], ExchangeService);
+exports.ExchangeService = ExchangeService;
+//# sourceMappingURL=exchange.service.js.map
